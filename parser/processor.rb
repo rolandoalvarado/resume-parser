@@ -2,12 +2,12 @@ require 'json'
 
 class Processor
 
-  def execute(command, file_path)
+  def execute(command)
     return if command.strip.empty?
 
     tokens = command.split(/\s+/)
-    operator = tokens.first
-    arguments = { tokens: tokens.last, file_path: file_path }
+    operator  = tokens.first
+    arguments = "/../#{tokens.last}"
 
     case operator
     when 'PARSE'
@@ -23,7 +23,7 @@ class Processor
   	message = nil
 
     begin
-      file = File.read(File.dirname(__FILE__) + arguments[:file_path])
+      file = File.read(File.dirname(__FILE__) + arguments)
       data_hash = JSON.parse(file)
       puts "data_hash : #{data_hash.inspect}"
 

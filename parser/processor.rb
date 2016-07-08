@@ -1,4 +1,5 @@
 require 'json'
+require 'redcloth'
 
 class Processor
 
@@ -25,7 +26,18 @@ class Processor
     begin
       file = File.read(File.dirname(__FILE__) + arguments)
       data_hash = JSON.parse(file)
-      puts "data_hash : #{data_hash.inspect}"
+      text_data = " Title: Software Engineer
+                    Name: #{data_hash['name']}
+                    Address: #{data_hash['address']}
+                    Mobile Number: #{data_hash['mobile_number']}
+                    Email: #{data_hash['email']}
+                    Career Objective: #{data_hash['career_objective']}
+                    Skills: #{data_hash['skills']}
+                  " 
+
+      formatted_data = RedCloth.new %{"#{text_data}"}
+
+	    puts formatted_data.to_html
 
       unless data_hash.nil?
         message = "File is empty."

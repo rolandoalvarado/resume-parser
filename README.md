@@ -37,4 +37,15 @@
 
     Coverage report generated for RSpec to /home/blake/Documents/Projects/Tests/resume-parser/coverage. 16 / 23 LOC (69.57%) covered.
 
-Run 'rake generate_all' to create specification file and html version of README file.
+  Run 'rake generate_all' to create specification file and html version of README and RESUME file.
+
+  2 Implementations of generating HTML version of json resume.
+
+  1. Running the parser
+     $ parser/resume_parser.rb
+     PARSE resume.json
+
+    OUTPUTS the json resume in HTML format.
+
+  2. Executing the rake task 'rake documentation' to generate an html version of README file and RESUME file.
+
